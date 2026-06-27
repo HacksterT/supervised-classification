@@ -1,0 +1,23 @@
+[project]
+name = "supervised-classification"
+version = "0.1.0"
+description = "Supervised classification (logistic regression, decision trees) evaluated to a clinical-research standard"
+requires-python = ">=3.13"
+dependencies = [
+    "numpy>=2.1",
+    "pandas>=2.2",
+    "scikit-learn>=1.6",
+    "seaborn>=0.13",
+    "matplotlib>=3.9",
+    "ipykernel>=6.29",
+    "jupyterlab>=4.2",
+]
+# Deliberately NOT including sklearn-pandas: it is abandoned and breaks on
+# scikit-learn >=1.6 (`cannot import name 'tosequence'`). In this notebook it was
+# only a phantom version-print import (no DataFrameMapper was ever used for
+# modeling; encoding is get_dummies), so dropping it was sufficient and the
+# notebook runs end-to-end. Pinning sklearn back would defeat the modernization.
+#
+# Also note: no shap/xgboost/lightgbm here, so neither the numba>=0.61 backtrack
+# guard nor `brew install libomp` applies. If SHAP is added during the rigor
+# upgrade, reintroduce the numba floor then.
