@@ -10,7 +10,21 @@ dependencies = [
     "seaborn>=0.13",
     "matplotlib>=3.9",
     "ipykernel>=6.29",
-    "jupyterlab>=4.2",
+    "jupyterlab>=4.6.4",
+]
+
+# Transitive security floors. Caps stay on the patched line: soupsieve 3 and 4
+# are breaking majors, and anyio 4.15+ / mistune 3.4 change behavior beyond the
+# advisory. Pillow 13 is a major bump and is not floored here.
+[tool.uv]
+constraint-dependencies = [
+    "anyio>=4.14.2,<4.15",
+    "certifi>=2026.10.18",
+    "mistune>=3.3.3,<3.4",
+    "nbconvert>=7.17.2",
+    "soupsieve>=2.9,<2.10",
+    "tornado>=6.6",
+    "urllib3>=2.8.0",
 ]
 # Deliberately NOT including sklearn-pandas: it is abandoned and breaks on
 # scikit-learn >=1.6 (`cannot import name 'tosequence'`). In this notebook it was
