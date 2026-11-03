@@ -15,13 +15,14 @@ dependencies = [
 
 # Transitive security floors. Caps stay on the patched line: soupsieve 3 and 4
 # are breaking majors, and anyio 4.15+ / mistune 3.4 change behavior beyond the
-# advisory. Pillow 13 is a major bump and is not floored here.
+# advisory. pillow>=13 is the major that closes the remaining image advisories.
 [tool.uv]
 constraint-dependencies = [
     "anyio>=4.14.2,<4.15",
     "certifi>=2026.10.18",
     "mistune>=3.3.3,<3.4",
     "nbconvert>=7.17.2",
+    "pillow>=13",
     "soupsieve>=2.9,<2.10",
     "tornado>=6.6",
     "urllib3>=2.8.0",
